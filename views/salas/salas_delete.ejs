@@ -1,12 +1,12 @@
 <div class="jumbotron">
     <div class="row">
         <div class="col-8">
-            <h4 class="font-weight-bold"><%= User.nombre %> <%= User.apellido %></h4>
-            <p class="lead">Alerta! ¿Quieres eliminar a este usuario?</p>
+            <h4 class="font-weight-bold"><%= User.nombre %> <%= User.user %></h4>
+            <p class="lead">Alerta! ¿Quieres eliminar a esta sala?</p>
             <p class="lead">
-            <form action="/delete/<%= User._id %>" method="POST">
+            <form action="/salas/salas_delete/<%= User._id %>" method="POST">
                 <button class="btn btn-danger btn-lg" type="submit">Eliminar</button>
-                <a class="btn btn-light btn-lg" href="/signup">Cancelar</a>
+                <a class="btn btn-light btn-lg" href="/salas_mant">Cancelar</a>
             </form>
             </p>
         </div>

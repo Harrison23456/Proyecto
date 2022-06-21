@@ -78,10 +78,6 @@ text-shadow: 2px 2px black;
     width: 35%;
 }
 
-.columnanueva {
-    float: left;
-    width: 50%;
-}
 .columna2 {
     float: left;
     width: 50%;
@@ -90,10 +86,6 @@ text-shadow: 2px 2px black;
 .columnaf {
     float: center;
     width: 78%;
-}
-.columnaff {
-    float: left;
-    width: 58%;
 }
 
 
@@ -109,10 +101,11 @@ text-shadow: 2px 2px black;
 input[type=text],
 input[type=password],
 input[type=tel] {
-    width: 90%;
+    width: 100%;
     padding: 10px;
 
     font-size: 18px;
+
     border: solid 1px blue;
     border-radius: 3px;
     outline: none;

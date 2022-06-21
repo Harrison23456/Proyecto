@@ -1,0 +1,30 @@
+<form action="/salas/salas_update/<%= User._id %>" method="POST">
+	<div class="columna2">
+
+	<div class="cardnuevo">
+
+	<div class="section">
+		<div class="field"><input type="text" value="<%= User.nombre %>" id="nombre" name="nombre" placeholder="Nombre de Sala"></div>
+	</div>
+	<div class="section">
+		<div class="field"><input type="text" value="<%= User.user %>" id="user" name="user" placeholder="Usuario"></div>
+	</div>
+	<div class="section">
+		<div class="field"><input type="text" value="<%= User.host %>" id="host" name="host" placeholder="Host"></div>
+	</div>
+	<div class="section">
+		<div class="field"><input type="text" value="<%= User.database %>" id="database" name="database" placeholder="Database"></div>
+	</div>
+
+	<div class="section">
+		<div class="field"><input type="password" value="<%= User.password %>" id="password" name="password" placeholder="Contraseña"></div>
+	</div>
+	<div class="section">
+		<div class="field"><input type="text" value="<%= User.port %>" id="port" name="port" placeholder="Port"></div>
+	</div>
+	<div class="section">
+		<div class="button"><input type="submit" value="Actualizar"></div>
+		<div class="button"><a href="/salas/salas_mant">Volver</a></div>
+	</div>
+	</div>
+		</div>

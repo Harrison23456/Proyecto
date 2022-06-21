@@ -1,0 +1,67 @@
+<div color=white class="card-3">
+		<div class="columna">
+				<h2>Monitoreo de Máquinas</h2>
+				<p></p>
+				<p></p>
+				<p></p>
+				<p></p>
+				<h4>N° de Máquinas activas: <%= req.length %></h4>
+		</div>
+
+		<div class="columna">
+				<h2><input type="text" id="search-bar-input" placeholder="Buscar máquinas..">
+					<p></p>
+				<button id="boton" class="btn btn-dark mb-2">Buscar</button></h2>
+		</div>
+
+		</div>
+
+	<div class="columnaf"> 	
+<p>
+...........
+</p>
+<p></p>
+	<table class="table table-hover table-dark" style="border:1px solid black">
+	  <tr class="table-info">
+	    <th>N°</th>
+	    <th>SEGMID</th>
+	    <th>Nombre de evento</th>	
+	    <th>Fecha</th>
+	    <th>Estado</th>
+	  </tr>
+
+	  <script>
+		    window.setInterval('refresh()', 10000); 	
+
+			setTimeout(function(){
+			   window.location.reload(1);
+			}, 5000);
+	  </script>
+
+	  <ul class="req">
+		  <% for(var i = 0; i < req.length; i++) {%>
+		  		  	<% 
+	  	let imagen;
+	  	switch(req[i].eventcode){
+	  	case '0x11':
+	  		imagen = 'https://cdn.discordapp.com/attachments/978327508262998036/978327611774230578/cerrado.png';
+	  		break;
+	  	case '0x12':
+	  		imagen = 'https://cdn.discordapp.com/attachments/978327508262998036/978327577599041556/abierto.png';
+	  		break;
+	  	default: 
+	  		imagen = 'https://cdn.discordapp.com/attachments/978327508262998036/981235599149236244/default.png';
+	  	}
+	  	%>
+	  <tr>
+	  	<td><%= i +1%></td>
+	  	<td><%= req[i].segmid %></td>
+	    <td><%= req[i].eventname %></td>
+	    <td><%= req[i].eventtime %></td>
+	    <td> <img src=<%=imagen%> alt="Estado"></td>
+
+	  </tr>
+	    <% } %>
+	</div> 
+	</ul>
+	</table>

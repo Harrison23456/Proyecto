@@ -1,0 +1,64 @@
+
+<form action="/salas/register_sala" method="POST">
+	<div class="columna2">
+
+	<div class="cardnuevo">
+
+	<div class="section">
+		<div class="field"><input type="text" id="nombre" name="nombre" placeholder="Nombre de Sala"></div>
+	</div>
+	<div class="section">
+		<div class="field"><input type="text" id="user" name="user" placeholder="Usuario"></div>
+	</div>
+	<div class="section">
+		<div class="field"><input type="text" id="host" name="host" placeholder="Host"></div>
+	</div>
+	<div class="section">
+		<div class="field"><input type="text" id="database" name="database" placeholder="Database"></div>
+	</div>
+<div class="columnaff">
+	<div class="section">
+		<div class="field"><input type="password" id="password" name="password" placeholder="Contraseña"></div>
+	</div>
+	</div>
+	<div class="columna">
+	<div class="section">
+		<div class="field"><input type="text" id="port" name="port" placeholder="Port" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"></div>
+	</div>
+</div>
+	<div class="section">
+		<div class="button"><input type="submit" value="Guardar"></div>
+	</div>
+	</div>
+		</div>
+
+
+<div class="columna">
+	<table class="table table-hover table-dark" style="width:100%">
+	  <tr class="table-info">
+	  	<th>N°</th>
+	  	<th>Nombre</th>
+	    <th>Usuario</th>
+	    <th>Host</th>
+	    <th>Database</th>
+	    <th>Editar</th>
+	    <th>Eliminar</th>
+	  </tr>
+	  <ul class="User">
+		  <% for(var i = 0; i < User.length; i++) {%>
+	  <tr>
+	  	<td><%= i %></td>
+	    <td><%= User[i].nombre %></td>
+	    <td><%= User[i].user %></td>
+	    <td><%= User[i].host %></td>
+	    <td><%= User[i].database %></td>
+	    <td><a href="/salas/salas_update/<%= User[i]._id %>" class="btn btn-sm btn-light"><img src="https://cdn.discordapp.com/attachments/973981565128437800/974316495016431667/upd.png" alt="Update"></a></td>
+	    <td><a href="/salas/salas_delete/<%= User[i]._id %>" class="btn btn-sm btn-light"><img src="https://cdn.discordapp.com/attachments/973981565128437800/974316494798352384/del.png" alt="Delete"></td>
+	  </tr>
+	    <% } %>
+	</ul>
+	</table>
+
+</div>
+	
+</form>

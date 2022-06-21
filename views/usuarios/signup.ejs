@@ -1,0 +1,73 @@
+
+<form action="/usuarios/register" method="POST">
+	<div class="columna2">
+
+	<div class="cardnuevo">
+
+	<div class="section">
+		<div class="field"><input type="text" id="username" name="username" placeholder="Usuario"></div>
+	</div>
+	<div class="section">
+		<div class="field"><input type="password" id="password" name="password" placeholder="Contraseña"></div>
+	</div>
+	<div class="section">
+		<div class="field"><input type="text" id="nombre" name="nombre" placeholder="Nombre"></div>
+	</div>
+	<div class="section">
+		<div class="field"><input type="text" id="apellido" name="apellido" placeholder="Apellido"></div>
+	</div>
+
+	<div class="columnaff">
+		<div class="section">
+			<div class="field"><input type="text" id="phone" name="phone" placeholder="Celular" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+			</div>
+		</div>
+	</div>
+
+	<div class="columna">
+		<div class="section">
+			<div class="field"><input type="text" id="usuario_user" name="usuario_user" placeholder="Sala">
+			</div>
+		</div>
+		</div>
+	<div class="section">
+
+	<div class="button"><input type="submit" value="Registrar"></div>
+		</div>
+
+	</div>
+	</div>
+		</div>
+
+	</div>
+
+
+<div class="columna">
+	<table class="table table-hover table-dark" style="width:100%">
+	  <tr class="table-info">
+	  	<th>#</th>
+	    <th>Usuario</th>
+	    <th>Nombre</th>
+	    <th>Apellido</th>
+	    <th>Sala</th>
+	    <th>Editar</th>
+	    <th>Eliminar</th>
+	  </tr>
+	  <ul class="User">
+		  <% for(var i = 0; i < User.length; i++) {%>
+	  <tr>
+	  	<td><%=i%></td>
+	    <td><%= User[i].username %></td>
+	    <td><%= User[i].nombre %></td>
+	    <td><%= User[i].apellido %></td>
+	    <td><%= User[i].usuario_user %></td>
+	    <td><a href="/usuarios/update/<%= User[i]._id %>" class="btn btn-sm btn-light"><img src="https://cdn.discordapp.com/attachments/973981565128437800/974316495016431667/upd.png" alt="Update"></a></td>
+	    <td><a href="/usuarios/delete/<%= User[i]._id %>" class="btn btn-sm btn-light"><img src="https://cdn.discordapp.com/attachments/973981565128437800/974316494798352384/del.png" alt="Delete"></td>
+	  </tr>
+	    <% } %>
+	</ul>
+	</table>
+
+</div>
+	
+</form>

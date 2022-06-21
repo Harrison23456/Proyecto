@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
-const bcrypt = require("bcrypt")
+const bcrypt = require("bcrypt");
+let jwt = require("jsonwebtoken");
 
 const saltRounds = 10;
 
@@ -8,9 +9,9 @@ let userSchema = new mongoose.Schema({
 	password: {type: String, required: true}, 
 	nombre: {type: String, required: true},
 	apellido: {type: String, required: true},
-	//tipo: {type: String, required: true},
-	phone: {type: String, required: true}
-
+	tipo: {type: String, required: true},
+	phone: {type: String, required: true},
+	usuario_user: {type: String, required: true}
 })
 
 userSchema.pre('save', function(next){
