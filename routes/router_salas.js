@@ -89,8 +89,15 @@ app.get("/salas/salas_varias", verify, async function (req, res, next){
 
 
 app.get("/salas/salas_varias_admin", verify, async function (req, res, next){
-  const usersCollection = await User.find()
-  res.render('salas/salas_varias_admin.ejs', { User: usersCollection})
+    try{
+      const usersCollection = await User.find()
+      res.render('salas/salas_varias_admin.ejs', { User: usersCollection})
+    }
+    catch(error)
+    {
+        return alert('Error al eliminar sala');
+        res.redirect('/salas/salas_varias_admin')
+    }
 });
 
 
@@ -146,6 +153,7 @@ app.post('/salas/salas_delete/:id', verify, async function(req, res, next) {
         res.redirect('/salas/salas_mant');        
     } catch (error) {
         return alert('Error al eliminar sala');
+        res.redirect('/salas/salas_varias_admin')
     }
 });
 
@@ -179,13 +187,15 @@ const pool = new Pool({
     port: 5432,
 });
 
-/*Manejo de errores de pooling*/
 pool.on('error', (err, client) => {
-    console.error('Error:', err);
+    console.log("error");
 });
 
  pool.connect((err, client, done) => {
-    if(err) throw err;
+    if(err){
+        alert('Sala no válida');
+        return res.redirect('back');
+    }
 
     const primer_sql = `select machines.segmid from machines where store_id= 1`
 

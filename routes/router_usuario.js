@@ -15,16 +15,16 @@ const prefix = require('array-prefix')
 const jwt_decode = require("jwt-decode");
 const isAdmin = require('../middlewares/isAdmin')
 
-
-const { Client, Pool } = require('pg');
-
-var app = express.Router();
-
-
-const url = 'mongodb+srv://Hector7832812_PPT2:we6767cwcewc9ews@cluster0.ejla6.mongodb.net/Usuarios'
 //usuario online_user
 //clave: qwerty@@
 //Base de DAtos: online_db
+//10.10.1.24
+const { Client, Pool } = require('pg');
+const url = 'mongodb+srv://Hector7832812_PPT2:we6767cwcewc9ews@cluster0.ejla6.mongodb.net/Usuarios'
+
+
+const app = express.Router();
+
 mongoose.connect(url,{
     maxPoolSize: 2,
     useNewUrlParser: true,
@@ -58,6 +58,7 @@ app.get("/usuarios/update/:id", verify, async function (req, res, next){
         });
         } catch (error) {
         alert('Ocurrió un error al actualizar usuario');
+        res.redirect('signup');
     }
 });
 
@@ -71,7 +72,8 @@ app.get("/usuarios/delete/:id", verify, async function (req, res, next){
             User: oneusuario
         });
     } catch (error) {
-        res.status(400).send(error.message);
+        alert('Ocurrió un error al eliminar usuario');
+        res.redirect('signup');
     }
 });
 
@@ -192,7 +194,7 @@ let id_nueva = `us${palrandom}`
         tipo: id_nueva,
         phone: data.phone,
     }, {new: true});
-    if(!user) return res.status(404).send('Usuario no encontrado');
+    if(!user) return alert('Usuario no encontrado');
 
     res.redirect('/usuarios/signup');
 });
@@ -202,10 +204,10 @@ app.post('/usuarios/delete/:id', async function(req, res, next) {
     try {
         const id = req.params.id;
         const user = await User.findByIdAndRemove(id);
-        if(!user) return res.status(404).send('Usuario no encontrado');
+        if(!user) return alert('Usuario no encontrado');
         res.redirect('/usuarios/signup');        
     } catch (error) {
-        res.status(400).send(error.message);
+        alert('Ocurrió un error en el momento de eliminar el usuario.');
     }
 });
 
@@ -214,7 +216,7 @@ app.get('/usuarios/logout', async function(req, res, next) {
         res.clearCookie('authentication-token', {path: '/'})
         res.redirect('/');        
     } catch (error) {
-        res.status(400).send(error.message);
+        console.log(error.message);
     }
 });
 module.exports = app;

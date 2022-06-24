@@ -32,6 +32,19 @@ th:first-child {
     transition: 0.3s;
 }
 
+.card-extra {
+    width: 1000px;
+    padding: 20px;
+    margin: 10px;
+
+    border: solid 1px gray;
+    /*float: left;*/
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
 .card-2 {
     width: 500px;
     padding: 20px;
